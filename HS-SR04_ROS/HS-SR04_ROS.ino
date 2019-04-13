@@ -43,7 +43,7 @@ void loop() {
   duration = pulseIn(echoPin, HIGH);
   distance = (duration/2) / 29.1;
 
-  // if out of range, set to -1 to indicate out of range
+  // if out of range, set to MAXRANGE
   if (distance >= MAXRANGE || distance <= MINRANGE){
     distance = MAXRANGE;
   }
@@ -59,5 +59,5 @@ void loop() {
   chatter.publish( &str_msg );
   nh.spinOnce();
   // publish roughly 4 times a second
-  delay(250);
+  delay(1000);
 }
